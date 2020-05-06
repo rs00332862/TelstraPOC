@@ -16,7 +16,6 @@ class CategoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        // Do any additional setup after loading the view.
         performInitialSetup()
         
     }
@@ -25,7 +24,7 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.categoryCustomCellIdentifier, for: indexPath) as! CategoryCell
-        print("Data exit")
+        cell.setCategoryData(forCellNumber: indexPath.row)
         return cell
     }
     
@@ -50,6 +49,9 @@ class CategoryViewController: UITableViewController {
         getCategoryDataFromViewModel()
     }
     
+    /// Fetch category data from category view model class
+    ///
+    /// Use this method to get data from ViewModel class and display response error if data is not in proper format
     func getCategoryDataFromViewModel() {
         categoryViewModel.getCategoryData() {
             let resonceErrorString = self.categoryViewModel.getResponseError()

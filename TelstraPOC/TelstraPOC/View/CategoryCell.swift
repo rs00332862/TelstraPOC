@@ -12,19 +12,19 @@ import UIKit
 class CategoryCell: UITableViewCell {
     
     private let categoryNameLabel: UILabel = {
-        let categorylbl = UILabel()
-        categorylbl.font = UIFont.boldSystemFont(ofSize: 20)
-        categorylbl.textAlignment = .left
-        return categorylbl
+        let categoryLabel = UILabel()
+        categoryLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        categoryLabel.textAlignment = .left
+        return categoryLabel
     }()
     
     private let categoryDescriptionLabel: UILabel = {
-        let descriptionLbl = UILabel()
-        descriptionLbl.font = UIFont.systemFont(ofSize: 16)
-        descriptionLbl.textAlignment = .left
-        descriptionLbl.numberOfLines = 0
-        descriptionLbl.sizeToFit()
-        return descriptionLbl
+        let descriptionLabel = UILabel()
+        descriptionLabel.font = UIFont.systemFont(ofSize: 16)
+        descriptionLabel.textAlignment = .left
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.sizeToFit()
+        return descriptionLabel
     }()
     private lazy var categoryImageView: UIImageView = {
         let imgView = UIImageView()
@@ -33,6 +33,7 @@ class CategoryCell: UITableViewCell {
         return imgView
     }()
     
+    //MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -52,5 +53,12 @@ class CategoryCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Private methods
+    func setCategoryData(forCellNumber: Int) {
+        let categoryData = CategoryViewModel().getCategoryDataObject(forCellNumber: forCellNumber) as CategoryData
+        categoryNameLabel.text = categoryData.categoryName
+        categoryDescriptionLabel.text = categoryData.categoryDescription
     }
 }

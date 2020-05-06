@@ -10,7 +10,7 @@ import Foundation
 
 class CategoryViewModel {
 
-    var categoryRowDataArray: [CategoryData]  = [CategoryData]()
+    static var categoryRowDataArray: [CategoryData]  = [CategoryData]()
     var screenTitle: String = ""
     var responseErrorString: String = ""
     
@@ -18,7 +18,7 @@ class CategoryViewModel {
         NetworkManager.sharedInstance.getDataFromWebService { (responseData, error) in
             DispatchQueue.main.async {
                 if responseData != nil {
-                    self.categoryRowDataArray = responseData?.categoryData ?? []
+                    CategoryViewModel.categoryRowDataArray = responseData?.categoryData ?? []
                     self.screenTitle = responseData?.screenTitle ?? ""
                 } else {
                     self.responseErrorString = error?.localizedDescription as! String
@@ -37,7 +37,10 @@ class CategoryViewModel {
     }
     
     func getCountOfCategoryData() -> Int {
-        return self.categoryRowDataArray.count
+        return CategoryViewModel.self.categoryRowDataArray.count
     }
     
+    func getCategoryDataObject(forCellNumber: Int) -> CategoryData {
+        return CategoryViewModel.categoryRowDataArray[forCellNumber]
+    }
 }
