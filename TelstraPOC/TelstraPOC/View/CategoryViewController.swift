@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryViewController: UITableViewController {
     
-    //MARK: - Parameters
+    //MARK: - Variables
     var categoryViewModel = CategoryViewModel()
     private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator =  UIActivityIndicatorView()
@@ -22,6 +22,7 @@ class CategoryViewController: UITableViewController {
         return activityIndicator
     }()
     
+     //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,7 +34,8 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.categoryCustomCellIdentifier, for: indexPath) as! CategoryCell
-        cell.setCategoryData(forCellNumber: indexPath.row)
+        cell.tag = indexPath.row
+        cell.setCategoryData()
         return cell
     }
     
@@ -45,19 +47,18 @@ class CategoryViewController: UITableViewController {
         return UITableView.automaticDimension
     }
     
-    //MARK: - Other Functions
+    //MARK: - Class Private Functions
     
     /// perform initital set of activities as view controller is loaded
     ///
     /// Use this method to perform all intial activites as view controller is loaded like setting up UI and making service call
-    func performInitialSetup() {
+    private func performInitialSetup() {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CategoryCell.self, forCellReuseIdentifier: Constant.categoryCustomCellIdentifier)
         //to set activity indicator on navigation bar
         let leftBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
         
-        //to get JSON data from service
         addPullToRefreshControl()
         getCategoryDataFromViewModel()
     }
@@ -65,7 +66,7 @@ class CategoryViewController: UITableViewController {
     /// Fetch category data from category view model class
     ///
     /// Use this method to get data from ViewModel class and display response error if data is not in proper format
-    func getCategoryDataFromViewModel() {
+    private func getCategoryDataFromViewModel() {
         activityIndicator.startAnimating()
         categoryViewModel.getCategoryData() {
             let resonceErrorString = self.categoryViewModel.getResponseError()
@@ -84,7 +85,7 @@ class CategoryViewController: UITableViewController {
     /// to set pull to refresh control
     ///
     /// Use this method to add pull to refresh conrol on view controller
-    func addPullToRefreshControl() {
+    private func addPullToRefreshControl() {
         //to add pull to refresh feature in applcaition
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.attributedTitle = NSAttributedString(string: NSLocalizedString("RefreshHeader", comment: "String to display while pulling data") )

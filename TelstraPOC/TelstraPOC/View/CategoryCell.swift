@@ -55,9 +55,11 @@ class CategoryCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private methods
-    func setCategoryData(forCellNumber: Int) {
-        let categoryData = CategoryViewModel().getCategoryDataObject(forCellNumber: forCellNumber) as CategoryData
+    //MARK: - Other methods
+    
+    /// Used this method to set data on respective table view cell
+    func setCategoryData() {
+        let categoryData = CategoryViewModel().getCategoryDataObject(forCellNumber: self.tag) as CategoryData
         categoryNameLabel.text = categoryData.categoryName
         categoryDescriptionLabel.text = categoryData.categoryDescription
         
