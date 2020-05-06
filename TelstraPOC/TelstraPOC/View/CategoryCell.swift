@@ -14,6 +14,7 @@ class CategoryCell: UITableViewCell {
     private let categoryNameLabel: UILabel = {
         let categoryLabel = UILabel()
         categoryLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        categoryLabel.textColor = UIColor.init(named: "TextLabelColorTheme")
         categoryLabel.textAlignment = .left
         return categoryLabel
     }()
@@ -22,6 +23,7 @@ class CategoryCell: UITableViewCell {
         let descriptionLabel = UILabel()
         descriptionLabel.font = UIFont.systemFont(ofSize: 16)
         descriptionLabel.textAlignment = .left
+        descriptionLabel.textColor = UIColor.init(named: "TextLabelColorTheme")
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
         return descriptionLabel
