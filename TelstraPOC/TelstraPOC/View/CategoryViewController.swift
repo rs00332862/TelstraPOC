@@ -74,8 +74,8 @@ class CategoryViewController: UITableViewController {
                 self.title = self.categoryViewModel.getScreenTitleForTableView()
                 self.tableView.reloadData()
             case .failure(let error):
-                let alert = UIAlertController(title: "Telstra POC", message: error.localizedDescription , preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: error.localizedDescription , preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
             self.activityIndicator.stopAnimating()

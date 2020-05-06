@@ -13,7 +13,6 @@ class NetworkManager {
     static let sharedInstance = NetworkManager()
     
     func getDataFromWebService(completion: @escaping (Result<CategoryDataModel, Error>) -> Void) {
-        
         guard let webServiceURL = URL.init(string: Constant.webServiceURL) else { return }
         URLSession.shared.dataTask(with: webServiceURL) { (data, response, error) in
             if let errorObject = error {

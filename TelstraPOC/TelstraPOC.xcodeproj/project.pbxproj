@@ -22,6 +22,7 @@
 		F91119692462CE0A00CBDADF /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91119682462CE0A00CBDADF /* CategoryCell.swift */; };
 		F911196B2462CF2C00CBDADF /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911196A2462CF2C00CBDADF /* UIView+Anchor.swift */; };
 		F911196D2462F46500CBDADF /* UIImageView+URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911196C2462F46500CBDADF /* UIImageView+URLImage.swift */; };
+		F911196F2463336200CBDADF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F911196E2463336200CBDADF /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		F91119682462CE0A00CBDADF /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		F911196A2462CF2C00CBDADF /* UIView+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
 		F911196C2462F46500CBDADF /* UIImageView+URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URLImage.swift"; sourceTree = "<group>"; };
+		F911196E2463336200CBDADF /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				F91119662462A97C00CBDADF /* Constant.swift */,
 				F911196A2462CF2C00CBDADF /* UIView+Anchor.swift */,
 				F911196C2462F46500CBDADF /* UIImageView+URLImage.swift */,
+				F911196E2463336200CBDADF /* Localizable.strings */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F91119372462A66A00CBDADF /* LaunchScreen.storyboard in Resources */,
+				F911196F2463336200CBDADF /* Localizable.strings in Resources */,
 				F91119342462A66A00CBDADF /* Assets.xcassets in Resources */,
 				F91119322462A66500CBDADF /* Main.storyboard in Resources */,
 			);

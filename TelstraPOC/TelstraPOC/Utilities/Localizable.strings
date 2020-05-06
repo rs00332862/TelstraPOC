@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  TelstraPOC
+
+  Created by Rohit on 5/6/20.
+  Copyright © 2020 Rohit. All rights reserved.
+*/
+
+"RefreshHeader" = "Pull to refresh";
+"ErrorHeader" = "Telstra POC";
+"OkButton" = "Ok";
