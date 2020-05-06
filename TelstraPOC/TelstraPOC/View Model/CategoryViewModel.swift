@@ -12,32 +12,24 @@ class CategoryViewModel {
     
     static var categoryRowDataArray: [CategoryData]  = [CategoryData]()
     var screenTitle: String = ""
-    var responseErrorString: String = ""
     
     /// To initiate webservice call to network manager
     /// Used this method to get latest data from web service
     ///
     /// - Returns: calls completion block to calling function, which ensure method call in executed and finished
-    func getCategoryData(completion: @escaping () -> ()) {
-        NetworkManager.sharedInstance.getDataFromWebService { (responseData, error) in
+    func getCategoryData(completion: @escaping (Result<Bool, Error>) -> Void) {
+        NetworkManager.sharedInstance.getDataFromWebService { responseData in
             DispatchQueue.main.async {
-                if responseData != nil {
-                    CategoryViewModel.categoryRowDataArray = responseData?.categoryData.filter{ $0.categoryName != nil } ?? []
-                    self.screenTitle = responseData?.screenTitle ?? ""
-                } else {
-                    self.responseErrorString = error?.localizedDescription as! String
+                switch(responseData) {
+                case .success(let responseData):
+                    CategoryViewModel.categoryRowDataArray = responseData.categoryData.filter{ $0.categoryName != nil }
+                    self.screenTitle = responseData.screenTitle
+                    completion(.success(true))
+                case.failure(let error):
+                    completion(.failure(error))
                 }
-                completion()
             }
         }
-    }
-    
-    /// To get error responce string, if received from webservice
-    /// Used this method to check webservice error response string
-    ///
-    /// - Returns: error responce sting which is received from network manager else retrun empty string
-    func getResponseError() -> String {
-        return self.responseErrorString
     }
     
     /// To return screen title to be displayed on table view controller

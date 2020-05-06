@@ -22,7 +22,7 @@ class CategoryViewController: UITableViewController {
         return activityIndicator
     }()
     
-     //MARK: - View life cycle
+    //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -68,17 +68,17 @@ class CategoryViewController: UITableViewController {
     /// Use this method to get data from ViewModel class and display response error if data is not in proper format
     private func getCategoryDataFromViewModel() {
         activityIndicator.startAnimating()
-        categoryViewModel.getCategoryData() {
-            let resonceErrorString = self.categoryViewModel.getResponseError()
-            self.activityIndicator.stopAnimating()
-            if resonceErrorString == "" {
+        categoryViewModel.getCategoryData {result in
+            switch(result) {
+            case .success:
                 self.title = self.categoryViewModel.getScreenTitleForTableView()
                 self.tableView.reloadData()
-            }  else {
-                let alert = UIAlertController(title: "Telstra POC", message: resonceErrorString , preferredStyle: .alert)
+            case .failure(let error):
+                let alert = UIAlertController(title: "Telstra POC", message: error.localizedDescription , preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            self.activityIndicator.stopAnimating()
         }
     }
     
