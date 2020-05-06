@@ -46,6 +46,7 @@ class CategoryViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CategoryCell.self, forCellReuseIdentifier: Constant.categoryCustomCellIdentifier)
         //to get JSON data from service
+        addPullToRefreshControl()
         getCategoryDataFromViewModel()
     }
     
@@ -64,6 +65,25 @@ class CategoryViewController: UITableViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    /// to set pull to refresh control
+    ///
+    /// Use this method to add pull to refresh conrol on view controller
+    func addPullToRefreshControl() {
+        //to add pull to refresh feature in applcaition
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.attributedTitle = NSAttributedString(string: NSLocalizedString("RefreshHeader", comment: "String to display while pulling data") )
+        self.refreshControl?.addTarget(self, action: #selector(pullToRefresh(sender:)), for: UIControl.Event.valueChanged)
+    }
+    
+    /// initiate pull to refresh mechanisum
+    ///
+    /// Use this method to refresh data on your view controller each time user perform pull to refresh action
+    @objc func pullToRefresh(sender:AnyObject) {
+        // Code to refresh table view
+        getCategoryDataFromViewModel()
+        self.refreshControl!.endRefreshing()
     }
 }
 
