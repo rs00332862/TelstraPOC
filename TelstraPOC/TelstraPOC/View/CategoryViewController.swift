@@ -12,6 +12,15 @@ class CategoryViewController: UITableViewController {
     
     //MARK: - Parameters
     var categoryViewModel = CategoryViewModel()
+    private var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator =  UIActivityIndicatorView()
+        if #available(iOS 13.0, *) {
+            activityIndicator.style = .medium
+        } else {
+            activityIndicator.style = .gray
+        }
+        return activityIndicator
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +45,6 @@ class CategoryViewController: UITableViewController {
         return UITableView.automaticDimension
     }
     
-    
     //MARK: - Other Functions
     
     /// perform initital set of activities as view controller is loaded
@@ -45,6 +53,10 @@ class CategoryViewController: UITableViewController {
     func performInitialSetup() {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CategoryCell.self, forCellReuseIdentifier: Constant.categoryCustomCellIdentifier)
+        //to set activity indicator on navigation bar
+        let leftBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
+        
         //to get JSON data from service
         addPullToRefreshControl()
         getCategoryDataFromViewModel()
@@ -54,8 +66,10 @@ class CategoryViewController: UITableViewController {
     ///
     /// Use this method to get data from ViewModel class and display response error if data is not in proper format
     func getCategoryDataFromViewModel() {
+        activityIndicator.startAnimating()
         categoryViewModel.getCategoryData() {
             let resonceErrorString = self.categoryViewModel.getResponseError()
+            self.activityIndicator.stopAnimating()
             if resonceErrorString == "" {
                 self.title = self.categoryViewModel.getScreenTitleForTableView()
                 self.tableView.reloadData()
@@ -86,4 +100,3 @@ class CategoryViewController: UITableViewController {
         self.refreshControl!.endRefreshing()
     }
 }
-
