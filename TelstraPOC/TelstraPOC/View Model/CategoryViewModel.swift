@@ -18,7 +18,7 @@ class CategoryViewModel {
         NetworkManager.sharedInstance.getDataFromWebService { (responseData, error) in
             DispatchQueue.main.async {
                 if responseData != nil {
-                    CategoryViewModel.categoryRowDataArray = responseData?.categoryData ?? []
+                    CategoryViewModel.categoryRowDataArray = responseData?.categoryData.filter{ $0.categoryName != nil } ?? []
                     self.screenTitle = responseData?.screenTitle ?? ""
                 } else {
                     self.responseErrorString = error?.localizedDescription as! String

@@ -22,7 +22,7 @@ struct CategoryDataModel: Decodable {
 struct CategoryData: Decodable {
     
     let categoryName: String?
-    let categoryDescription: String?
+    let categoryDescription: String? 
     let categoryImageURL: String?
     
     enum CodingKeys: String, CodingKey {

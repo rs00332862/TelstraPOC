@@ -21,6 +21,7 @@
 		F91119672462A97C00CBDADF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91119662462A97C00CBDADF /* Constant.swift */; };
 		F91119692462CE0A00CBDADF /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91119682462CE0A00CBDADF /* CategoryCell.swift */; };
 		F911196B2462CF2C00CBDADF /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911196A2462CF2C00CBDADF /* UIView+Anchor.swift */; };
+		F911196D2462F46500CBDADF /* UIImageView+URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911196C2462F46500CBDADF /* UIImageView+URLImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		F91119662462A97C00CBDADF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F91119682462CE0A00CBDADF /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		F911196A2462CF2C00CBDADF /* UIView+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
+		F911196C2462F46500CBDADF /* UIImageView+URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URLImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				F91119662462A97C00CBDADF /* Constant.swift */,
 				F911196A2462CF2C00CBDADF /* UIView+Anchor.swift */,
+				F911196C2462F46500CBDADF /* UIImageView+URLImage.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				F91119652462A94000CBDADF /* NetworkManager.swift in Sources */,
 				F911192F2462A66500CBDADF /* CategoryViewController.swift in Sources */,
 				F91119692462CE0A00CBDADF /* CategoryCell.swift in Sources */,
+				F911196D2462F46500CBDADF /* UIImageView+URLImage.swift in Sources */,
 				F911192B2462A66500CBDADF /* AppDelegate.swift in Sources */,
 				F91119622462A85000CBDADF /* CategoryViewModel.swift in Sources */,
 				F911192D2462A66500CBDADF /* SceneDelegate.swift in Sources */,

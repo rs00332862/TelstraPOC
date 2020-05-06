@@ -60,5 +60,11 @@ class CategoryCell: UITableViewCell {
         let categoryData = CategoryViewModel().getCategoryDataObject(forCellNumber: forCellNumber) as CategoryData
         categoryNameLabel.text = categoryData.categoryName
         categoryDescriptionLabel.text = categoryData.categoryDescription
+        
+        guard let imageURL = categoryData.categoryImageURL else {
+            categoryImageView.image = UIImage.init(named: "NoImage")
+            return
+        }
+        categoryImageView.loadImageFromURL(imageURL, placeHolder: UIImage.init(named: "NoImage"))
     }
 }
