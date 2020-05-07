@@ -31,15 +31,7 @@ class CategoryViewModel {
             }
         }
     }
-    
-    /// To return screen title to be displayed on table view controller
-    /// Used this method if user want to get title string received from webservice
-    ///
-    /// - Returns: title to be displayed on table view controller.
-    func getScreenTitleForTableView() -> String {
-        return self.screenTitle
-    }
-    
+
     /// To return categoryData Object count for table view data source method
     /// Used this method if user want to know the count of data object received from service
     ///

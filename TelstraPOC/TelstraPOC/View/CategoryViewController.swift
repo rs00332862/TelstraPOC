@@ -71,8 +71,14 @@ class CategoryViewController: UITableViewController {
         categoryViewModel.getCategoryData {result in
             switch(result) {
             case .success:
-                self.title = self.categoryViewModel.getScreenTitleForTableView()
-                self.tableView.reloadData()
+                if(self.categoryViewModel.getCountOfCategoryData() > 0) {
+                    self.title = self.categoryViewModel.screenTitle
+                    self.tableView.reloadData()
+                } else {
+                    let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: NSLocalizedString("NoDataAvailable", comment: "") , preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             case .failure(let error):
                 let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: error.localizedDescription , preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))

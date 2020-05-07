@@ -118,7 +118,7 @@
 				F911195D2462A7E100CBDADF /* View */,
 				F911195C2462A7D800CBDADF /* View Model */,
 				F911195B2462A7CD00CBDADF /* Model */,
-				F911195A2462A72300CBDADF /* App Deligate */,
+				F911195A2462A72300CBDADF /* App Delegate */,
 				F91119632462A92900CBDADF /* Network Manager */,
 				F911195E2462A7EF00CBDADF /* Utilities */,
 				F91119302462A66500CBDADF /* Main.storyboard */,
@@ -147,13 +147,13 @@
 			path = TelstraPOCUITests;
 			sourceTree = "<group>";
 		};
-		F911195A2462A72300CBDADF /* App Deligate */ = {
+		F911195A2462A72300CBDADF /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
 				F911192A2462A66500CBDADF /* AppDelegate.swift */,
 				F911192C2462A66500CBDADF /* SceneDelegate.swift */,
 			);
-			path = "App Deligate";
+			path = "App Delegate";
 			sourceTree = "<group>";
 		};
 		F911195B2462A7CD00CBDADF /* Model */ = {

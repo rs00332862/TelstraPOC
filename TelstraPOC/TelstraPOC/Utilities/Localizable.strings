@@ -9,3 +9,4 @@
 "RefreshHeader" = "Pull to refresh";
 "ErrorHeader" = "Telstra POC";
 "OkButton" = "Ok";
+"NoDataAvailable" = "No data available, Please try again after some time.";
