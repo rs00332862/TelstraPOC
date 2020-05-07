@@ -75,14 +75,10 @@ class CategoryViewController: UITableViewController {
                     self.title = self.categoryViewModel.screenTitle
                     self.tableView.reloadData()
                 } else {
-                    let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: NSLocalizedString("NoDataAvailable", comment: "") , preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.displayErrorMessageWith(messageString: NSLocalizedString("NoDataAvailable", comment: ""))
                 }
             case .failure(let error):
-                let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: error.localizedDescription , preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.displayErrorMessageWith(messageString: error.localizedDescription)
             }
             self.activityIndicator.stopAnimating()
         }
@@ -105,5 +101,14 @@ class CategoryViewController: UITableViewController {
         // Code to refresh table view
         getCategoryDataFromViewModel()
         self.refreshControl!.endRefreshing()
+    }
+    
+    /// Method to dsiplay error messages on veiwcontroller
+    ///
+    /// - Parameter messageString: String to be used while displaying error message
+    func displayErrorMessageWith(messageString:String) {
+        let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: messageString , preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
