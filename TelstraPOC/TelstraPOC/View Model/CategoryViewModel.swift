@@ -16,9 +16,10 @@ class CategoryViewModel {
     /// To initiate webservice call to network manager
     /// Used this method to get latest data from web service
     ///
-    /// - Returns: calls completion block to calling function, which ensure method call in executed and finished
+    /// - Returns: calls completion block to calling function, which ensure method call in executed and finished with Result type
     func getCategoryData(completion: @escaping (Result<Bool, Error>) -> Void) {
-        NetworkManager.sharedInstance.getDataFromWebService { responseData in
+        NetworkManager.sharedInstance.getDataFromWebService(urlString: Constant.webServiceURL){
+            (responseData: Result<CategoryDataModel, Error>) in
             DispatchQueue.main.async {
                 switch(responseData) {
                 case .success(let responseData):
@@ -31,7 +32,7 @@ class CategoryViewModel {
             }
         }
     }
-
+    
     /// To return categoryData Object count for table view data source method
     /// Used this method if user want to know the count of data object received from service
     ///

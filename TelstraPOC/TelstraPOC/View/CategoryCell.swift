@@ -63,7 +63,7 @@ class CategoryCell: UITableViewCell {
     func setCategoryData() {
         let categoryData = CategoryViewModel().getCategoryDataObject(forCellNumber: self.tag) as CategoryData
         categoryNameLabel.text = categoryData.categoryName
-        categoryDescriptionLabel.text = categoryData.categoryDescription
+        categoryDescriptionLabel.text =  categoryData.categoryDescription 
         
         guard let imageURL = categoryData.categoryImageURL else {
             categoryImageView.image = UIImage.init(named: "NoImage")
