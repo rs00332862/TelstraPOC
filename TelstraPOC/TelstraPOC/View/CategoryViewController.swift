@@ -55,12 +55,18 @@ class CategoryViewController: UITableViewController {
     private func performInitialSetup() {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CategoryCell.self, forCellReuseIdentifier: Constant.categoryCustomCellIdentifier)
+        addActivityIndicator()
+        addPullToRefreshControl()
+        getCategoryDataFromViewModel()
+    }
+    
+    /// Add activity indicator on navigation bar
+    ///
+    /// Use this method to add activity indicator on navigation bar
+    private func addActivityIndicator(){
         //to set activity indicator on navigation bar
         let leftBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
-        
-        addPullToRefreshControl()
-        getCategoryDataFromViewModel()
     }
     
     /// Fetch category data from category view model class
