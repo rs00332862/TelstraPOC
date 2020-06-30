@@ -6,3 +6,5 @@
 4. The Table View displays the image along with a title and a description in each of its cells, as the view is scrolled down (Image is downloaded asynchronously and displayed using the main thread)
 5. Added activity indicator on the navigation bar as UI is not supposed to be blocked while loading data
 6. Provided support for version iOS 12 and above
+7. Provided feature to perform pull to refresh data on view controller
+8. Added Testcase to check webservice success response
